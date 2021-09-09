@@ -25,7 +25,6 @@ h1 {
 	color: white;
 	font-size: 15px;
 	padding-right: 10px;
-	padding-left: 10px;
 }
 .icon:hover	{
 	color: #C4C4C4;	
@@ -43,7 +42,7 @@ h1 {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
 	color: white;
-	padding-right: 8px;
+	padding-right: 15px;
 }
 
 .login-link:hover {
