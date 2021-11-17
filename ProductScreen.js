@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, useParams } from 'react-router-dom'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import products from '../products'
 
 const ProductScreen = ({ props, match }) => {
+    const [showA, setShowA] = useState(true);
+    const toggleShowA = () => setShowA(!showA);
     const { id } = useParams()
     const product = products.find(p => p._id === parseInt(id))
     return (
@@ -62,7 +64,7 @@ const ProductScreen = ({ props, match }) => {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroupItem>
-                                <Button  className='btn btn-block btn-success' type='button' disabled={product.Quantity === 0}>
+                                <Button onClick={toggleShowA} className='btn btn-block btn-success mb-2' type='button' disabled={product.Quantity === 0}>
                                     Add to Cart
                                 </Button>
                             </ListGroupItem>
@@ -75,6 +77,13 @@ const ProductScreen = ({ props, match }) => {
                     </ListGroup>
                 </Col>
             </Row>
+            <Toast show={showA} onClose={toggleShowA}>
+                <Toast.Header>
+                    <strong className="me-auto">Indian Design Collective</strong>
+                    <small>Now</small>
+                    </Toast.Header>
+                    <Toast.Body>Woohoo, you've added {product.Name} to cart!</Toast.Body>
+                    </Toast>
         </>
     )
 }
