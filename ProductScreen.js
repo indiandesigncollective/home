@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, useParams } from 'react-router-dom'
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel} from 'react-bootstrap'
 import Rating from '../Components/Rating'
@@ -10,9 +11,11 @@ const ProductScreen = ({ props, match }) => {
     const product = products.find(p => p._id === parseInt(id))
     return (
         <>
-        <Link className='btn btn-outline-secondary btn-sm my-3' to='/'>
-            Go Back
-            </Link>
+        <ol class="breadcrumb bg-secondary">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">{product.Category}</a></li>
+            <li class="breadcrumb-item active">{product.Name}</li>
+        </ol>
             <Row>
                 <Col>
                     <Carousel fade swipeable overscrollable>
@@ -34,7 +37,7 @@ const ProductScreen = ({ props, match }) => {
                             </h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h3><Rating value={product.Ratings} /> </h3>
+                            <h3><Rating value = {product.Ratings} color = '#f9cd66' /></h3>
                         </ListGroup.Item>
                         <Card>
                         <ListGroup variant='flush'>
@@ -59,7 +62,7 @@ const ProductScreen = ({ props, match }) => {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroupItem>
-                                <Button  className='btn-block' type='button' disabled={product.Quantity === 0}>
+                                <Button  className='btn btn-block btn-success' type='button' disabled={product.Quantity === 0}>
                                     Add to Cart
                                 </Button>
                             </ListGroupItem>
@@ -67,7 +70,7 @@ const ProductScreen = ({ props, match }) => {
                     </Card>
                         <ListGroup.Item>
                             <br></br>
-                            Description: {product.Description}
+                            <p>{product.Description}</p>
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
