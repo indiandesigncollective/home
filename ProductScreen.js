@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import products from '../products'
+import Zoom from 'react-img-zoom'
 
 const ProductScreen = ({ props, match }) => {
     const [showA, setShowA] = useState(true);
@@ -21,12 +22,19 @@ const ProductScreen = ({ props, match }) => {
                 <Col>
                     <Carousel fade swipeable overscrollable>
                         <Carousel.Item>
-                            <div>
-                                <Image src={product.Image_URL_1} alt={product.Name} fluid></Image>
-                                </div>
+                            {/* <div> */}
+                            <Zoom
+                            img={product.Image_URL_1}
+                            zoomScale={2}
+                             width={600}
+                            height={600}/>
                         </Carousel.Item>
                         <Carousel.Item>
-                        <Image src={product.Image_URL_2} alt={product.Name} fluid></Image>
+                        <Zoom
+                            img={product.Image_URL_2}
+                            zoomScale={2}
+                             width={600}
+                            height={600}/>
                         </Carousel.Item>
                     </Carousel>
                 </Col>
