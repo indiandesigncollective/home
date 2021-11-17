@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, useParams } from 'react-router-dom'
@@ -32,12 +31,13 @@ const ProductScreen = ({ props, match }) => {
                 <Col>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>
-                                {product.Name}
-                            </h2>
+                            <h2>{product.Name}</h2> 
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h3><Rating value = {product.Ratings} color = '#f9cd66' /></h3>
+                            <h5>Category: {product.Category}</h5>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <h4><Rating value = {product.Ratings} color = '#f9cd66' /></h4>
                         </ListGroup.Item>
                         <Card>
                         <ListGroup variant='flush'>
@@ -80,4 +80,3 @@ const ProductScreen = ({ props, match }) => {
 }
 
 export default ProductScreen
-
