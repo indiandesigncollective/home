@@ -1,6 +1,7 @@
+
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import products from '../products'
 
@@ -13,10 +14,19 @@ const ProductScreen = ({ props, match }) => {
             Go Back
             </Link>
             <Row>
-                <Col md={6}>
-                    <Image src={product.Image_URL_1} alt={product.name} fluid />
+                <Col>
+                    <Carousel fade swipeable overscrollable>
+                        <Carousel.Item>
+                            <div>
+                                <Image src={product.Image_URL_1} alt={product.Name} fluid></Image>
+                                </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                        <Image src={product.Image_URL_2} alt={product.Name} fluid></Image>
+                        </Carousel.Item>
+                    </Carousel>
                 </Col>
-                <Col md={3}>
+                <Col>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>
@@ -24,18 +34,9 @@ const ProductScreen = ({ props, match }) => {
                             </h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Rating value={product.Ratings} />
+                            <h3><Rating value={product.Ratings} /> </h3>
                         </ListGroup.Item>
-                        <ListGroup.Item>
-                            Price: &#8377;{product.Price}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            Description: {product.Description}
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
-                <Col md={3}>
-                    <Card>
+                        <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <Row>
@@ -64,6 +65,11 @@ const ProductScreen = ({ props, match }) => {
                             </ListGroupItem>
                         </ListGroup>
                     </Card>
+                        <ListGroup.Item>
+                            <br></br>
+                            Description: {product.Description}
+                        </ListGroup.Item>
+                    </ListGroup>
                 </Col>
             </Row>
         </>
