@@ -1,8 +1,8 @@
 import React, {useState, useEffect } from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast, FormControl, Form} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -10,18 +10,21 @@ import { listProductDetails } from '../actions/productActions'
 //import products from '../products'
 //import Zoom from 'react-img-zoom'
 
-const ProductScreen = ({ props, match }) => {
-    const [showA, setShowA] = useState(true);
-    const toggleShowA = () => setShowA(!showA);
+const ProductScreen = ({ history, props, match }) => {
+    const [qty, setQty] = useState(0)
     const { id } = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
+    const quant = [1, 2, 3, 4, 5, 6, 7, 8,9, 10]
     const {loading, error, product} = productDetails
 
     useEffect(() => {
         dispatch(listProductDetails(id))   
     }, [dispatch, match]) 
     //const product = products.find(p => p._id === parseInt(id))
+    const addToCartHandler = () => {}
+    //     this.props.history.push(`/cart/$(match.params.id)/?qty=$(qty)`)
+    // }
     return (
         <>
         <ol class="breadcrumb bg-secondary">
@@ -78,8 +81,24 @@ const ProductScreen = ({ props, match }) => {
                                 </Col>
                             </Row>
                         </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>Qty</Col>
+                                    <Col>
+                                        <Form.Control as='select' value = {qty} onChange = {(e) => setQty(e.target.value)}>
+                                          {quant.map((x) => (
+                                              <option key ={x} value ={x}>
+                                                  {x}
+                                              </option>))} 
+                                        </Form.Control>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
                         <ListGroupItem>
-                            <Button onClick={toggleShowA} className='btn btn-block btn-success mb-2' type='button' disabled={product.Quantity === 0}>
+                            <Button onClick = {addToCartHandler}
+                            className='btn btn-block btn-success mb-2' 
+                            type='button' 
+                            disabled={product.Quantity === 0}>
                                 Add to Cart
                             </Button>
                         </ListGroupItem>
@@ -93,14 +112,7 @@ const ProductScreen = ({ props, match }) => {
             </Col>
         </Row>
         )}
-            
-            <Toast onClose={toggleShowA}>
-                <Toast.Header>
-                    <strong className="me-auto">Indian Design Collective</strong>
-                    <small>Now</small>
-                </Toast.Header>
-                <Toast.Body>Woohoo, you've added {product.Name} to cart!</Toast.Body>
-            </Toast>
+
         </>
     )
 }

@@ -5,7 +5,7 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
-//import products from '../products'
+import products from '../products'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()

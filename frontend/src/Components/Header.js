@@ -8,7 +8,7 @@ const Header = () => {
         <header><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
           <Link to='/'>
-            <a class="navbar-brand">Indian Design Collective</a>
+            <a style={{color: "#ededed"}}class="navbar-brand">Indian Design Collective</a>
             </Link>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
