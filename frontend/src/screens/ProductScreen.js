@@ -12,7 +12,7 @@ import { listProductDetails } from '../actions/productActions'
 
 const ProductScreen = ({ props, match }) => {
     const [showA, setShowA] = useState(true);
-    const toggleShowA = () => setShowA(showA);
+    const toggleShowA = () => setShowA(!showA);
     const { id } = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
@@ -94,7 +94,7 @@ const ProductScreen = ({ props, match }) => {
         </Row>
         )}
             
-            <Toast show={showA} onClose={toggleShowA}>
+            <Toast onClose={toggleShowA}>
                 <Toast.Header>
                     <strong className="me-auto">Indian Design Collective</strong>
                     <small>Now</small>
