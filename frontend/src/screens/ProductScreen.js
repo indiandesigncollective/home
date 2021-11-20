@@ -1,6 +1,8 @@
 import React, {useState, useEffect } from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import { Link, useParams, useHistory } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useNavigate } from "react-router"
+import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast, FormControl, Form} from 'react-bootstrap'
 import Rating from '../Components/Rating'
@@ -11,7 +13,7 @@ import { listProductDetails } from '../actions/productActions'
 //import Zoom from 'react-img-zoom'
 
 const ProductScreen = ({ history, props, match }) => {
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
     const { id } = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
@@ -21,10 +23,7 @@ const ProductScreen = ({ history, props, match }) => {
     useEffect(() => {
         dispatch(listProductDetails(id))   
     }, [dispatch, match]) 
-    //const product = products.find(p => p._id === parseInt(id))
-    const addToCartHandler = () => {}
-    //     this.props.history.push(`/cart/$(match.params.id)/?qty=$(qty)`)
-    // }
+    //const product = products.find(p => p._id === parseInt(id))        
     return (
         <>
         <ol class="breadcrumb bg-secondary">
@@ -95,12 +94,15 @@ const ProductScreen = ({ history, props, match }) => {
                                 </Row>
                             </ListGroup.Item>
                         <ListGroupItem>
-                            <Button onClick = {addToCartHandler}
+                            <Link to= {`/cart/${id}?qty=${qty}`} >
+                            {/* <Link to= {`/cart/${id}`} > */}
+                            <Button
                             className='btn btn-block btn-success mb-2' 
                             type='button' 
                             disabled={product.Quantity === 0}>
                                 Add to Cart
                             </Button>
+                           </Link> 
                         </ListGroupItem>
                     </ListGroup>
                 </Card>
