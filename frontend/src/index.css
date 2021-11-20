@@ -65,3 +65,21 @@ p {
 .carousel-indicators { 
   visibility: hidden; 
 }
+
+h6 {
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  color: #5a5a5a;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+  color: #5a5a5a;
+}
+

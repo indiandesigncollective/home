@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useNavigate } from "react-router"
 import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast, FormControl, Form} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast, Form} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -26,15 +26,15 @@ const ProductScreen = ({ history, props, match }) => {
     //const product = products.find(p => p._id === parseInt(id))        
     return (
         <>
-        <ol class="breadcrumb bg-secondary">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">{product.Category}</a></li>
-            <li class="breadcrumb-item active">{product.Name}</li>
+        <ol className="breadcrumb bg-secondary">
+            <li className="breadcrumb-item"><a href="/">Home</a></li>
+            <li className="breadcrumb-item"><a href="#">{product.Category}</a></li>
+            <li className="breadcrumb-item active">{product.Name}</li>
         </ol>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <Row>
             <Col>
-                <Carousel fade swipeable overscrollable>
+                <Carousel fade>
                     <Carousel.Item>
                         <div>
                             <Image src={product.Image_URL_1} alt={product.Name} fluid></Image>
@@ -84,12 +84,21 @@ const ProductScreen = ({ history, props, match }) => {
                                 <Row>
                                     <Col>Qty</Col>
                                     <Col>
-                                        <Form.Control as='select' value = {qty} onChange = {(e) => setQty(e.target.value)}>
+                                        {/* <Form.Control as='select' value = {qty} onChange = {(e) => setQty(e.target.value)}>
                                           {quant.map((x) => (
                                               <option key ={x} value ={x}>
                                                   {x}
                                               </option>))} 
-                                        </Form.Control>
+                                        </Form.Control> */}
+                                        <div class="form-group">
+                            <select multiple="" className="form-select" id="exampleSelect2" value = {qty} onChange = {(e) =>  setQty(e.target.value)}>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                             </select>
+                             </div>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>

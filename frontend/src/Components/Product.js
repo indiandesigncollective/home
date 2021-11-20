@@ -6,12 +6,12 @@ import Rating from './Rating'
 const Product = ({ product }) => {
     return (
         <Card className = 'my-3 p-3 rounded'>
-            <Link to= {`/product/${product._id}`}>
+            <Link style = {{textDecoration:'none'}} to= {`/product/${product._id}`}>
                 <Card.Img src = {product.Image_URL_1} variant = "top" />
                 </Link>
                 
                 <Card.Body>
-                <Link to= {`/product/${product._id}`}>
+                <Link style = {{textDecoration:'none'}} to= {`/product/${product._id}`}>
                     <Card.Title as='div'>
                         {product.Name}
                         </Card.Title> 
@@ -20,7 +20,7 @@ const Product = ({ product }) => {
                 <Card.Text as='div'>
                     <Rating value = {product.Ratings} color = '#f4959a' />
                 </Card.Text>
-                <Card.Text as ='h8'>&#8377; {product.Price}</Card.Text>
+                <Card.Text as ='h6'>&#8377; {product.Price}</Card.Text>
             </Card.Body>
         </Card>
     )
