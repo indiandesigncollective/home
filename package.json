@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.2.0",
     "history": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
     "react-bootstrap-breadcrumbs": "^0.1.2",
     "react-img-zoom": "^0.1.0",
