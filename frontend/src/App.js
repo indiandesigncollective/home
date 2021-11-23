@@ -6,6 +6,7 @@ import Footer from '../../frontend/src/Components/Footer'
 import ProductScreen from '../../frontend/src/screens/ProductScreen'
 import HomeScreen from '../../frontend/src/screens/HomeScreen'
 import CartScreen from '../../frontend/src/screens/CartScreen'
+import LoginScreen from './screens/LoginScreen'
 const App = () => {
   return (
     <Router>
@@ -13,12 +14,12 @@ const App = () => {
     <main className='py-3'>
       <Container>
       <Routes>
-      <Route path='/' element={<HomeScreen />} />
+      <Route path='/login' element={<LoginScreen />} />
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/cart/:id' element={<CartScreen />} />
       <Route path='/cart' element={<CartScreen />} />
-       {/*  <Route path='/' component = {HomeScreen} exact />  */}
-       {/* <Route path='/product/:id' component = {ProductScreen}/> */}
+      <Route path='/' element={<HomeScreen />} />
+
        </Routes>
         {/* <HomeScreen /> */}
     </Container>

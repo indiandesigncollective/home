@@ -26,7 +26,7 @@ const Header = () => {
                 <Link to='/search' className="nav-link bi bi-search"></Link>
               </li>
               <li className="nav-item">
-                <Link to='/search' className="nav-link bi bi-person-circle"></Link>
+                <Link to='/login' className="nav-link bi bi-person-circle"></Link>
               </li>
               <li className="nav-item">
                 <Link to='/cart' className="nav-link bi bi-bag"></Link> 
