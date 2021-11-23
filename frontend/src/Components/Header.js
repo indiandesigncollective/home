@@ -1,9 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 //import { LinkContainer } from 'react-router-bootstrap'
-import { Container, Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Container, Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap'
 
 const Header = () => {
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin
+
+  const logoutHandler = () => {
+    console.log('logout')
+  }
+
     return (
         <header><nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
@@ -25,9 +35,18 @@ const Header = () => {
               <li className="nav-item push">
                 <Link to='/search' className="nav-link bi bi-search"></Link>
               </li>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id='username'>
+                  <Link to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </Link>
+                  <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+                </NavDropdown>
+              ) : 
               <li className="nav-item">
-                <Link to='/login' className="nav-link bi bi-person-circle"></Link>
-              </li>
+                  <Link to='/login' className="nav-link bi bi-person-circle"></Link>
+                </li>
+                }
               <li className="nav-item">
                 <Link to='/cart' className="nav-link bi bi-bag"></Link> 
               </li>
