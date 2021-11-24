@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate} from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
@@ -7,11 +7,12 @@ import Loader from '../Components/Loader'
 import FormContainer from '../Components/FormContainer'
 import { login } from '../actions/userActions'
 
-const LoginScreen = () => {
+const LoginScreen = ({ history }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate();
+
     const dispatch = useDispatch()
+
     const userLogin = useSelector(state => state.userLogin)
     const { loading, error, userInfo } = userLogin
 
@@ -22,6 +23,8 @@ const LoginScreen = () => {
         e.preventDefault()
         dispatch(login(email, password))
     }
+
+
     return (
         <FormContainer>
             <h1>Sign In</h1>
@@ -40,7 +43,7 @@ const LoginScreen = () => {
                     </Form.Control>
                 </Form.Group>
                 <br></br>
-                <Button href = "" type='submit' variant='secondary'>
+                <Button type='submit' variant='secondary'>
                     Sign In
                 </Button>
             </Form>
