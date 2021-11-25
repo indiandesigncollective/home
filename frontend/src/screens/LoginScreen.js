@@ -6,25 +6,24 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import FormContainer from '../Components/FormContainer'
 import { login } from '../actions/userActions'
+import { USER_LOGIN_SUCCESS } from '../constants/userConstants'
 
-const LoginScreen = ({ history }) => {
+const LoginScreen = ({ }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
 
     const userLogin = useSelector(state => state.userLogin)
-    const { loading, error, userInfo } = userLogin
+    const { loading, error, success } = userLogin
 
-    let location = useLocation()
-    // const redirect = location.search ? location.search.split('=')[1] : '/'
-    // let navigate = useNavigate())
+    let navigate = useNavigate()
+    // const redirect = location.search ? location.search.split('=')[1] : '/')
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(email, password))
+        {success && navigate('/cart')}
     }
-
-
     return (
         <FormContainer>
             <h1>Sign In</h1>
