@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
-import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { getUserDetails } from '../actions/userActions'
 
 const ProfileScreen = ({  }) => {
     const [name, setName] = useState('')
@@ -16,58 +16,57 @@ const ProfileScreen = ({  }) => {
 
     const dispatch = useDispatch()
 
-    const userDetails = useSelector(state => state.userRegister)
+    const userDetails = useSelector((state) => state.userRegister)
     const { loading, error, user } = userDetails
 
-    const userLogin = useSelector(state => state.userRegister)
+    const userLogin = useSelector((state) => state.userRegister)
     const { userInfo } = userLogin
 
-    const userUpdateProfile = useSelector(state => state.userRegister)
-    const { success } = userUpdateProfile
+    // const userUpdateProfile = useSelector((state) => state.userRegister)
+    // const { success } = userUpdateProfile
 
     //let location = useLocation()
-    //const redirect = location.search ? location.search.split('=')[1] : '/'
     let navigate = useNavigate()
-
     useEffect(() => {
-        if(!(userInfo)){
-            navigate("/profile")
-        } else {
+        if(!userInfo) {
+            navigate('/login')
+        } 
+        else {
             if(!user.name){
                 dispatch(getUserDetails('profile'))
-            } else{
+            } else {
                 setName(user.name)
                 setEmail(user.email)
             }
         }
-    }, [dispatch, useNavigate, userInfo])
+    }, [dispatch, userInfo, user])
 
     const submitHandler = (e) => {
         e.preventDefault()
         if(password !== confirmPassword) {
             setMessage('Passwords do not match')
         } else {
-            dispatch(updateUserProfile(user))
+            //update
         }
     }
-
     return <Row>
         <Col md={3}>
         <h2>User Profile </h2>
+
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
-            {success && <Message variant='success'>Updated Profile</Message>}
+            {/* {success && <Message variant='success'>Updated Profile</Message>} */}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='name'>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}>
+                    <Form.Control type='name' placeholder = "Enter name" value={name} onChange={(e) => setName(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}>
+                    <Form.Control type='email' placeholder = "Enter email" value={email} onChange={(e) => setEmail(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
                 <br></br>
