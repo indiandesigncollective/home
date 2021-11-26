@@ -15,10 +15,20 @@ const LoginScreen = ({ }) => {
     const dispatch = useDispatch()
 
     const userLogin = useSelector(state => state.userLogin)
-    const { loading, error, success } = userLogin
+    const { loading, error, userInfo, success } = userLogin
 
     let navigate = useNavigate()
-    // const redirect = location.search ? location.search.split('=')[1] : '/')
+    let location = useLocation()
+
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+    
+    useEffect(() => {
+        if(userInfo)
+        {
+            navigate(redirect)
+        }
+    },[userInfo, useNavigate, redirect])
+
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(email, password))
@@ -48,7 +58,7 @@ const LoginScreen = ({ }) => {
             </Form>
             <Row className='py-3'>
                 <Col>
-                New Customer? <Link to={'/register'}>Register</Link>
+                New Customer? <Link to={redirect ? `/register?redirect=${redirect}`:'/register'}>Register</Link>
                 </Col>
             </Row>
         </FormContainer>
