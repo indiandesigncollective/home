@@ -113,6 +113,13 @@ const ProductScreen = ({ match }) => {
                                 Add to Cart
                             </Button>
                            </Link> 
+                           <Link to = {`/wishlist/${id}`}>
+                           <Button
+                            className='btn btn-block btn-secondary mb-2' 
+                            type='button' >
+                                Add to Wishlist
+                            </Button>
+                            </Link>
                         </ListGroupItem>
                     </ListGroup>
                 </Card>

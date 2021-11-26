@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import CategoryScreen from './screens/CategoryScreen'
+import WishlistScreen from './screens/WishlistScreen'
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/cart/:id' element={<CartScreen />} />
       <Route path='/cart' element={<CartScreen />} />
+      <Route path='/wishlist/:id' element={<WishlistScreen />} />
+      <Route path='/wishlist' element={<WishlistScreen />} />
       <Route path='/decor' element={<CategoryScreen />} />
       <Route path='/beauty' element={<CategoryScreen />} />
       <Route path='/accessories' element={<CategoryScreen />} />
