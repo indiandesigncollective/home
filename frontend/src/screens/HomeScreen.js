@@ -36,8 +36,8 @@ const HomeScreen = () => {
             <center><h2>Shop By Category</h2></center>
             <br></br>
             <Row>
-                <Col>
-                    <Card style={{ width: '20rem' }}>
+                <Col> <center>
+                    <Card style={{ width: '20rem', marginLeft:'6px', marginRight:'6px'}}>
                     <Link style = {{textDecoration:'none'}} to= {"/decor"}>
                         <Card.Img variant="top" src="https://media.chumbak.com/media/catalog/product/8/9/8907605103902_top.jpg" />
                         </Link> 
@@ -50,8 +50,9 @@ const HomeScreen = () => {
                             </Link> 
                         </Card.Body>
                         </Card>
+                   </center>     
                  </Col>  
-                 <Col>
+                 <Col> <center>
                     <Card style={{ width: '20rem' }}>
                     <Link style = {{textDecoration:'none'}} to= {"/beauty"}>
                         <Card.Img variant="top" src="https://media.chumbak.com/media/catalog/product/image/500x625/8/9/8907605102042_plus35.jpg" />
@@ -62,8 +63,9 @@ const HomeScreen = () => {
                         </Link>    
                         </Card.Body>
                         </Card>
+                        </center> 
                  </Col>  
-                 <Col>
+                 <Col> <center>
                     <Card style={{ width: '20rem' }}>
                     <Link style = {{textDecoration:'none'}} to= {"/accessories"}>
                         <Card.Img variant="top" src="https://media.chumbak.com/media/catalog/product/image/500x625/8/9/8907605098697_plus24.jpg" />
@@ -74,6 +76,7 @@ const HomeScreen = () => {
                             </Link> 
                         </Card.Body>
                         </Card>
+                        </center> 
                  </Col>       
             </Row>
             
