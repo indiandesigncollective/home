@@ -12,7 +12,7 @@ import Loader from '../Components/Loader'
 import { listProductDetails } from '../actions/productActions'
 import { listProducts } from '../actions/productActions'
 //import products from '../products'
-//import Zoom from 'react-img-zoom'
+import Zoom from 'react-img-zoom'
 
 const ProductScreen = ({ match }) => {
     const [qty, setQty] = useState(1)
@@ -44,13 +44,13 @@ const ProductScreen = ({ match }) => {
                 <Carousel fade>
                     <Carousel.Item>
                         <div>
-                            <Image src={product.Image_URL_1} alt={product.Name} fluid></Image>
+                            {/* <Image src={product.Image_URL_1} alt={product.Name} fluid></Image> */}
                         </div>
-                        {/* <Zoom img={product.Image_URL_1} zoomScale={2} width={600} height={600}/> */}
+                        <Zoom img={product.Image_URL_1} zoomScale={2} width={600} height={600}/>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Image src={product.Image_URL_2} alt={product.Name} fluid></Image>
-                    {/* <Zoom img={product.Image_URL_2} zoomScale={2} width={600} height={600}/> */}
+                        {/* <Image src={product.Image_URL_2} alt={product.Name} fluid></Image> */}
+                    <Zoom img={product.Image_URL_2} zoomScale={2} width={600} height={600}/>
                     </Carousel.Item>
                 </Carousel>
             </Col>

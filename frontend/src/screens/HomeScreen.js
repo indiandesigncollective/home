@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Carousel } from 'react-bootstrap'
 import Product from '../Components/Product'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import products from '../products'
 import CartScreen from './CartScreen'
+import slider1 from '../slider/Slider1.png'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -20,8 +21,21 @@ const HomeScreen = () => {
         dispatch(listProducts())
     }, [dispatch])
 
+
     return (
         <>
+<br></br>
+<Carousel variant = "dark">
+  <Carousel.Item>
+    <img
+    className="d-block w-100"
+      src="slider1"
+      alt="First slide"
+    />
+  </Carousel.Item>
+</Carousel>
+<br></br>
+
             <center><h2>Bestsellers</h2></center>
             {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : 
                 <Row>
