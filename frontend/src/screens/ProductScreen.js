@@ -12,13 +12,13 @@ import { listProductDetails } from '../actions/productActions'
 //import products from '../products'
 //import Zoom from 'react-img-zoom'
 
-const ProductScreen = ({ history, props, match }) => {
+const ProductScreen = ({ match }) => {
     const [qty, setQty] = useState(1)
     const { id } = useParams()
     const dispatch = useDispatch()
-    const productDetails = useSelector(state => state.productDetails)
-    const quant = [1, 2, 3, 4, 5, 6, 7, 8,9, 10]
+    const productDetails = useSelector((state) => state.productDetails)
     const {loading, error, product} = productDetails
+    
 
     useEffect(() => {
         dispatch(listProductDetails(id))   
@@ -28,7 +28,7 @@ const ProductScreen = ({ history, props, match }) => {
         <>
         <ol className="breadcrumb bg-secondary">
             <li className="breadcrumb-item"><a href="/">Home</a></li>
-            <li className="breadcrumb-item"><a href="#">{product.Category}</a></li>
+            <li className="breadcrumb-item"><a href={`/products/${product.Category}`}>{product.Category}</a></li>
             <li className="breadcrumb-item active">{product.Name}</li>
         </ol>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
@@ -84,12 +84,6 @@ const ProductScreen = ({ history, props, match }) => {
                                 <Row>
                                     <Col>Qty</Col>
                                     <Col>
-                                        {/* <Form.Control as='select' value = {qty} onChange = {(e) => setQty(e.target.value)}>
-                                          {quant.map((x) => (
-                                              <option key ={x} value ={x}>
-                                                  {x}
-                                              </option>))} 
-                                        </Form.Control> */}
                                         <div class="form-group">
                             <select multiple="" className="form-select" id="exampleSelect2" value = {qty} onChange = {(e) =>  setQty(e.target.value)}>
                             <option>1</option>

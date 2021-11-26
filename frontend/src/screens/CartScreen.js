@@ -30,7 +30,7 @@ const CartScreen = ({history}) => {
     let navigate = useNavigate()
     const checkoutHandler = () => {
             navigate('/login?redirect=/shipping')
-    }
+        }
 
     return (
         <Row>

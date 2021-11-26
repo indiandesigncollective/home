@@ -9,6 +9,7 @@ import CartScreen from '../../frontend/src/screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import CategoryScreen from './screens/CategoryScreen'
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/cart/:id' element={<CartScreen />} />
       <Route path='/cart' element={<CartScreen />} />
+      <Route path='/decor' element={<CategoryScreen />} />
+      <Route path='/beauty' element={<CategoryScreen />} />
+      <Route path='/accessories' element={<CategoryScreen />} />
       <Route path='/' element={<HomeScreen />} />
 
        </Routes>
