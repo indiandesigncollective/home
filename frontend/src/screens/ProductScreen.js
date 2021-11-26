@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, useParams } from 'react-router-dom'
+import Product from '../Components/Product'
 import { useNavigate } from "react-router"
 import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +10,7 @@ import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listProductDetails } from '../actions/productActions'
+import { listProducts } from '../actions/productActions'
 //import products from '../products'
 //import Zoom from 'react-img-zoom'
 
@@ -17,8 +19,13 @@ const ProductScreen = ({ match }) => {
     const { id } = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector((state) => state.productDetails)
-    const {loading, error, product} = productDetails
+    const productList = useSelector(state => state.productList)
+    const { loading, error, products } = productList
+    const { product } = productDetails
     
+    useEffect(() => {
+        dispatch(listProducts())
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(listProductDetails(id))   
@@ -116,7 +123,16 @@ const ProductScreen = ({ match }) => {
                 </ListGroup>
             </Col>
         </Row>
+        
         )}
+        <center><h2>More Like This</h2></center>
+        <Row>
+        {products.filter(p => p.Category === product.Category && p.Tag === "bestseller" && p.Name !== product.Name).map(product => (
+            <Col key={product._id} s={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+            </Col>
+        ))}
+    </Row>
 
         </>
     )
