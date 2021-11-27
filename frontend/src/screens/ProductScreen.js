@@ -30,6 +30,14 @@ const ProductScreen = ({ match }) => {
     useEffect(() => {
         dispatch(listProductDetails(id))   
     }, [dispatch, match]) 
+    
+
+    const recommend = products.filter(p => p.Category === product.Category && p.Tag === "bestseller" && p.Name !== product.Name)
+    const chunk1 = recommend.slice(0,4) 
+    const chunk2 = recommend.slice(4,8)
+
+    console.log(chunk2)
+
     //const product = products.find(p => p._id === parseInt(id))        
     return (
         <>
@@ -133,14 +141,28 @@ const ProductScreen = ({ match }) => {
         
         )}
         <center><h2>More Like This</h2></center>
+        <Carousel fade
+        interval = "3000" 
+        controls = {false}>
+        <Carousel.Item>
         <Row>
-        {products.filter(p => p.Category === product.Category && p.Tag === "bestseller" && p.Name !== product.Name).map(product => (
-            <Col key={product._id} s={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-            </Col>
-        ))}
+        {chunk1.map(product => (
+                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
+                            <Product product={product} />
+                        </Col>        
+                    ))}         
     </Row>
-
+    </Carousel.Item>
+    <Carousel.Item>
+        <Row>
+        {chunk2.map(product => (
+                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
+                            <Product product={product} />
+                        </Col>        
+                    ))}         
+    </Row>
+    </Carousel.Item>
+    </Carousel>
         </>
     )
 }

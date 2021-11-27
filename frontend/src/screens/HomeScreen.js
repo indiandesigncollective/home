@@ -25,15 +25,15 @@ const HomeScreen = () => {
     return (
         <>
 <br></br>
-<Carousel variant = "dark">
+{/* <Carousel variant = "dark">
   <Carousel.Item>
     <img
     className="d-block w-100"
-      src="slider1"
-      alt="First slide"
+      src="{slider1}"
+      alt="slider1"
     />
   </Carousel.Item>
-</Carousel>
+</Carousel> */}
 <br></br>
 
             <center><h2>Bestsellers</h2></center>
