@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import products from '../products'
 import CartScreen from './CartScreen'
-import slider1 from '../slider/Slider1.png'
+import slider1 from 'home/frontend/src/slider1.png'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -25,15 +25,17 @@ const HomeScreen = () => {
     return (
         <>
 <br></br>
-{/* <Carousel variant = "dark">
+<Carousel fade
+variant = "dark"
+controls ={false}>
   <Carousel.Item>
     <img
     className="d-block w-100"
-      src="{slider1}"
-      alt="slider1"
+      src ={slider1}
+      alt="Slider1"
     />
   </Carousel.Item>
-</Carousel> */}
+</Carousel>
 <br></br>
 
             <center><h2>Bestsellers</h2></center>

@@ -37,28 +37,30 @@ const ProductScreen = ({ match }) => {
     const chunk2 = recommend.slice(4,8)
 
     console.log(chunk2)
-
-    //const product = products.find(p => p._id === parseInt(id))        
+    const s = String(product.Category)
+    const title = s.charAt(0).toUpperCase()+s.slice(1)      
     return (
         <>
         <ol className="breadcrumb bg-secondary">
             <li className="breadcrumb-item"><a href="/">Home</a></li>
-            <li className="breadcrumb-item"><a href={`/products/${product.Category}`}>{product.Category}</a></li>
+            <li className="breadcrumb-item"><a href={`/${product.Category}`}>{title}</a></li>
             <li className="breadcrumb-item active">{product.Name}</li>
         </ol>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <Row>
             <Col>
-                <Carousel fade>
+                <Carousel fade
+                controls = {false}
+                interval = "3000">
                     <Carousel.Item>
                         <div>
-                            {/* <Image src={product.Image_URL_1} alt={product.Name} fluid></Image> */}
+                            <Image src={product.Image_URL_1} alt={product.Name} fluid></Image>
                         </div>
-                        <Zoom img={product.Image_URL_1} zoomScale={2} width={600} height={600}/>
+                        {/* <Zoom img={product.Image_URL_1} zoomScale={2} width={600} height={600}/> */}
                     </Carousel.Item>
                     <Carousel.Item>
-                        {/* <Image src={product.Image_URL_2} alt={product.Name} fluid></Image> */}
-                    <Zoom img={product.Image_URL_2} zoomScale={2} width={600} height={600}/>
+                        <Image src={product.Image_URL_2} alt={product.Name} fluid></Image>
+                    {/* <Zoom img={product.Image_URL_2} zoomScale={2} width={600} height={600}/> */}
                     </Carousel.Item>
                 </Carousel>
             </Col>
@@ -68,7 +70,7 @@ const ProductScreen = ({ match }) => {
                         <h2>{product.Name}</h2> 
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <h5>Category: {product.Category}</h5>
+                        <h5>Category: {title}</h5>
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4><Rating value = {product.Ratings} color = '#f9cd66' /></h4>
@@ -142,8 +144,11 @@ const ProductScreen = ({ match }) => {
         )}
         <center><h2>More Like This</h2></center>
         <Carousel fade
+        prevIcon = {<span aria-hidden="true" className="bi bi-arrow-right-square-fill" />}
+        // controls = {false}
         interval = "3000" 
-        controls = {false}>
+        // controls = {false}
+        >
         <Carousel.Item>
         <Row>
         {chunk1.map(product => (
