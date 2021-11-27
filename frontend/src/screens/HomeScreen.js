@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
-import products from '../products'
-import CartScreen from './CartScreen'
-import slider1 from 'home/frontend/src/slider1.png'
+import slider1 from "../slider/slider1.png"
+import slider2 from "../slider/slider2.png"
+import slider3 from "../slider/slider3.png"
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -32,6 +32,20 @@ controls ={false}>
     <img
     className="d-block w-100"
       src ={slider1}
+      alt="Slider1"
+    />
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+    className="d-block w-100"
+      src ={slider2}
+      alt="Slider1"
+    />
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+    className="d-block w-100"
+      src ={slider3}
       alt="Slider1"
     />
   </Carousel.Item>
