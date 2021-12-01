@@ -31,28 +31,28 @@ const ShippingScreen = ({history}) => {
             <Form onSubmit={submitHandler}>
             <Form.Group controlId='address'>
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type='text' placeholder='Enter Address' value={address} required onChange={(e) => setAddress(e.target.value)}>
+                    <Form.Control type='textarea' placeholder='Enter Address' value={address} required onChange={(e) => setAddress(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
-
+<br></br>
                 <Form.Group controlId='city'>
                     <Form.Label>City</Form.Label>
                     <Form.Control type='text' placeholder='Enter City' value={city} required onChange={(e) => setCity(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
-
+                <br></br>
                 <Form.Group controlId='postalCode'>
                     <Form.Label>Postal Code</Form.Label>
                     <Form.Control type='text' placeholder='Enter Postal Code' value={postalCode} required onChange={(e) => setPostalCode(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
-
+                <br></br>
                 <Form.Group controlId='country'>
                     <Form.Label>Country</Form.Label>
                     <Form.Control type='text' placeholder='Enter Country' value={country} required onChange={(e) => setCountry(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
-
+                <br></br>
                 <Button type='submit' variant='primary'>
                     Continue
                 </Button>
