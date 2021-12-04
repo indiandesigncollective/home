@@ -8,7 +8,7 @@ import FormContainer from '../Components/FormContainer'
 import { register } from '../actions/userActions'
 import { USER_LOGIN_SUCCESS } from '../constants/userConstants'
 
-const LoginScreen = ({ }) => {
+const RegisterScreen = ({ }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -18,7 +18,7 @@ const LoginScreen = ({ }) => {
     const dispatch = useDispatch()
 
     const userRegister = useSelector(state => state.userRegister)
-    const { loading, error, userInfo, success } = userRegister
+    const { loading, error, userInfo , success} = userRegister
 
     let navigate = useNavigate()
     let location = useLocation()
@@ -49,7 +49,7 @@ const LoginScreen = ({ }) => {
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
-            <Form.Group controlId='email'>
+            <Form.Group controlId='name'>
                     <Form.Label>Name</Form.Label>
                     <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}>
                     </Form.Control>
@@ -86,4 +86,4 @@ const LoginScreen = ({ }) => {
     )
 }
 
-export default LoginScreen
+export default RegisterScreen
