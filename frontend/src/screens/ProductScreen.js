@@ -164,6 +164,7 @@ const ProductScreen = ({ match }) => {
                 </ListGroup>
             </Col>
         </Row>
+        <br></br>
         <Row>
             <Col md={6}>
                 <h2>Reviews</h2>
@@ -191,13 +192,15 @@ const ProductScreen = ({ match }) => {
                                     <option value='5'>5 - Excellent</option>
                                 </Form.Control>
                             </Form.Group>
+                            <br></br>
                             <Form.Group controlId='comment'>
-                                <Form.Label>Comment <br></br></Form.Label>
+                                <Form.Label>Comment</Form.Label>
                                 <Form.Control as='textarea' row='3' value={comment} onChange={(e) => setComment(e.target.value)}>
                                 </Form.Control>
                             </Form.Group>
+                            <br></br>
                             <Button type='submit' variant='primary'>
-                                Submit
+                                Submit review
                             </Button>
                         </Form>) : <Message>Please <Link to='/login'>sign in </Link>to write a review</Message> }
                     </ListGroup.Item>
