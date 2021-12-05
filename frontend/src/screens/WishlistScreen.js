@@ -23,11 +23,14 @@ const WishScreen = ({ }) => {
     const removeFromWishHandler  = (id) => {
         dispatch(removeFromWish(id))
         }
+    const addToCartHandler  = (id) => {
+            dispatch(addToCart(id))
+            }   
 
     let navigate = useNavigate()
-    const checkoutHandler = () => {
-            navigate('/login?redirect=/shipping')
-        }
+    // const checkoutHandler = () => {
+    //         navigate('/login?redirect=/shipping')
+    //     }
 
     return (
         <Row>

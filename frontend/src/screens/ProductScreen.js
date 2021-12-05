@@ -30,13 +30,13 @@ const ProductScreen = ({ match }) => {
     useEffect(() => {
         dispatch(listProductDetails(id))   
     }, [dispatch, match]) 
-    
+
+    let navigate = useNavigate()
 
     const recommend = products.filter(p => p.Category === product.Category && p.Tag === "bestseller" && p.Name !== product.Name)
     const chunk1 = recommend.slice(0,4) 
     const chunk2 = recommend.slice(4,8)
 
-    console.log(chunk2)
     const s = String(product.Category)
     const title = s.charAt(0).toUpperCase()+s.slice(1)      
     return (
@@ -115,7 +115,6 @@ const ProductScreen = ({ match }) => {
                             </ListGroup.Item>
                         <ListGroupItem>
                             <Link to= {`/cart/${id}?qty=${qty}`} >
-                            {/* <Link to= {`/cart/${id}`} > */}
                             <Button
                             className='btn btn-block btn-success mb-2' 
                             type='button' 
@@ -147,7 +146,6 @@ const ProductScreen = ({ match }) => {
         prevIcon = {<span aria-hidden="true" className="bi bi-arrow-right-square-fill" />}
         // controls = {false}
         interval = "3000" 
-        // controls = {false}
         >
         <Carousel.Item>
         <Row>

@@ -12,6 +12,7 @@ import {
     from './reducers/userReducers'
 
 import {orderCreateReducer, orderDetailsReducer, orderListMyReducer } from './reducers/orderReducers'
+import { wishReducer } from './reducers/wishReducers'
 
 const reducer = combineReducers({
     productList: productListReducer,
@@ -24,6 +25,7 @@ const reducer = combineReducers({
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderListMy: orderListMyReducer,
+    wish: wishReducer
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
@@ -32,10 +34,12 @@ const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localS
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}
 
+const wishItemsFromStorage = localStorage.getItem('wishItems') ? JSON.parse(localStorage.getItem('wishItems')) : []
 
 const initialState = {
     cart: { cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage },
     userLogin: { userInfo: userInfoFromStorage },
+    wish: { wishItems: wishItemsFromStorage},
 }
 const middleware = [thunk]
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
