@@ -27,9 +27,11 @@ main{
 .d-flex {
 	height: 40px;
 	display:flex;
-	justify-content: right;
+  width: 100vw;
+  margin: 0 0;
+	justify-content: left;
 	align-items: center;
-	background-color: #ededed;
+	background-color: white;
 }
 .login-link {
 	font-size: 12px;

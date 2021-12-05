@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 //import { LinkContainer } from 'react-router-bootstrap'
-import { NavDropdown } from 'react-bootstrap'
+import { Container, NavDropdown } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 
 const Header = () => {
@@ -16,7 +16,8 @@ const Header = () => {
   }
 
     return (
-        <header><nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <header>
+          <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
           <Link to='/' style={{color: "#ededed"}}className="navbar-brand">Indian Design Collective</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
