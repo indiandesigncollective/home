@@ -1,9 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 //import { LinkContainer } from 'react-router-bootstrap'
 import { Container, NavDropdown } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
+import SearchBox from './SearchBox'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -37,6 +38,9 @@ const Header = () => {
               <li className="nav-item push">
                 <Link to='/search' className="nav-link bi bi-search"></Link>
               </li>
+              {/* <li>
+                <Route render={({ }) => <SearchBox/>}></Route>
+              </li> */}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                     <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>

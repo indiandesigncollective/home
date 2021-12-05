@@ -38,6 +38,7 @@ const App = () => {
       <Route path='/decor' element={<CategoryScreen />} />
       <Route path='/beauty' element={<CategoryScreen />} />
       <Route path='/accessories' element={<CategoryScreen />} />
+      <Route path='/search/:keyword' element={<HomeScreen />} />
       <Route path='/' element={<HomeScreen />} />
 
        </Routes>
