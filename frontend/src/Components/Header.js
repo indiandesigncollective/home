@@ -15,6 +15,8 @@ const Header = () => {
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
 
+  const qty = cartItems.reduce((acc, item)=> acc + item.qty, 0)
+
   const logoutHandler = () => {
     dispatch(logout())
   }
@@ -56,7 +58,7 @@ const Header = () => {
                 </li>
                 }
               <li className="nav-item">
-                <Link to='/cart' className="nav-link bi bi-bag"> {cartItems.length}</Link> 
+                <Link to='/cart' className="nav-link bi bi-bag"> {qty}</Link> 
               </li>
             </ul>
           </div>
