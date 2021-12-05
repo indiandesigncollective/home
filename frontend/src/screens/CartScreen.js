@@ -2,9 +2,8 @@ import React, { useEffect } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Form} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import { addToCart, removeFromCart } from '../actions/cartActions'
-import { login } from '../actions/userActions'
 import { addToWish } from '../actions/wishActions'
 
 const CartScreen = ({}) => {
