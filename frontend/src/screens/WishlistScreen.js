@@ -39,7 +39,7 @@ const WishScreen = ({ match }) => {
            <Col md = {9}>
             <h1>Wishlist</h1>
             {wishItems.length === 0 ? (
-            <Message>Your wish is empty  <br></br><Link to ="/">Go back to home</Link></Message>
+            <Message>Your wishlist is empty.  <br></br><Link to ="/">Go back to home</Link></Message>
             ) : <ListGroup variant = "flush">
                 {wishItems.map(item => (
                     <ListGroup.Item key = {item.product}>
