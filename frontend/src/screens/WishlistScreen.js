@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Form} from 'react-bootstrap'
 import { login } from '../actions/userActions'
-import removeFromWish  from '../actions/wishActions'
-import  addToWish  from '../actions/wishActions'
+import { removeFromWish, addToWish }  from '../actions/wishActions'
+import  { addToCart }  from '../actions/cartActions'
 
-const WishScreen = ({ }) => {
+const WishScreen = ({ match }) => {
     const { id } = useParams()
     const dispatch = useDispatch()
-
     const wish = useSelector(state => state.wish)
     const { wishItems } = wish
 
@@ -19,15 +18,18 @@ const WishScreen = ({ }) => {
             dispatch(addToWish(id))
         }
     }, [dispatch, id])
+    
 
     const removeFromWishHandler  = (id) => {
         dispatch(removeFromWish(id))
         }
+        let navigate = useNavigate()
     const addToCartHandler  = (id) => {
             dispatch(addToCart(id))
+            navigate(`/cart/${id}?qty=1`)
             }   
-
-    let navigate = useNavigate()
+    
+ 
     // const checkoutHandler = () => {
     //         navigate('/login?redirect=/shipping')
     //     }
@@ -35,7 +37,7 @@ const WishScreen = ({ }) => {
     return (
         <Row>
            <Col md = {9}>
-            <h1>Shopping Bag</h1>
+            <h1>Wishlist</h1>
             {wishItems.length === 0 ? (
             <Message>Your wish is empty  <br></br><Link to ="/">Go back to home</Link></Message>
             ) : <ListGroup variant = "flush">
@@ -52,29 +54,25 @@ const WishScreen = ({ }) => {
                                 <Button type = "button" variant = 'light' onClick = {()=>removeFromWishHandler(item.product)}>
                                 <i className = "bi bi-trash"></i></Button>
                             </Col>
+                            <Col md = {3}>
+                                <Button type = "button" variant = 'light' onClick = {()=>addToCartHandler(item.product)}>
+                                <i className = "bi bi-bag"></i> Move to Cart</Button>
+                            </Col>
+                            <Col md = {2}>
+                                {item.countInStock > 200 ? 
+                                <p>In Stock.</p> :
+                                <p> Running Low. </p>}
+
+                            </Col>
                         </Row>
                     </ListGroup.Item>
-
+                
                 )
-                    
                     )}
+                    
             </ListGroup>        
         }
-           </Col>
-           <Col md = {3}>
-            <Card>
-                <ListGroup variant = 'flush'>
-                    <ListGroup.Item>
-                        <h2>Subtotal ({wishItems.reduce((acc, item)=> acc + item.qty, 0)}) items</h2>
-                        &#8377; {wishItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        <Button type='button' className='btn-block' disabled={wishItems.length === 0} onClick={checkoutHandler}>
-                            Proceed to Checkout</Button>                
-                    </ListGroup.Item>
-                </ListGroup>
-            </Card>
-           </Col>
+        </Col>  
         </Row>
     )
 }

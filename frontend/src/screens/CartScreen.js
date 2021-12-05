@@ -5,8 +5,9 @@ import Message from '../Components/Message'
 import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Form} from 'react-bootstrap'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import { login } from '../actions/userActions'
+import { addToWish } from '../actions/wishActions'
 
-const CartScreen = ({history}) => {
+const CartScreen = ({}) => {
     const { id } = useParams()
     let location = useLocation()
     const quant = [1, 2, 3, 4 , 5, 6, 7, 8, 9, 10]
@@ -16,7 +17,7 @@ const CartScreen = ({history}) => {
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-
+    let navigate = useNavigate()
     useEffect(() => {
         if(id) {
             dispatch(addToCart(id, qty))
@@ -26,8 +27,13 @@ const CartScreen = ({history}) => {
     const removeFromCartHandler  = (id) => {
         dispatch(removeFromCart(id))
         }
+    const moveToWishHandler  = (id) => {
+            dispatch(removeFromCart(id))
+            dispatch(addToWish(id))
+            navigate(`/wishlist`)
+            }
 
-    let navigate = useNavigate()
+  
     const checkoutHandler = () => {
             navigate('/login?redirect=/shipping')
         }
@@ -63,6 +69,10 @@ const CartScreen = ({history}) => {
                             <Col md = {1}>
                                 <Button type = "button" variant = 'light' onClick = {()=>removeFromCartHandler(item.product)}>
                                 <i className = "bi bi-trash"></i></Button>
+                            </Col>
+                            <Col md = {1}>
+                                <Button type = "button" variant = 'light' onClick = {()=>moveToWishHandler(item.product)}>
+                                <i className = "bi bi-heart"></i></Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>
