@@ -2,12 +2,15 @@ import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { Link, Route } from 'react-router-dom'
 //import { LinkContainer } from 'react-router-bootstrap'
-import { Container, NavDropdown } from 'react-bootstrap'
+import { Container, NavDropdown, Button } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 import SearchBox from './SearchBox'
 
 const Header = () => {
   const dispatch = useDispatch()
+
+  const cart = useSelector(state => state.cart)
+  const { cartItems } = cart
 
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
@@ -53,7 +56,7 @@ const Header = () => {
                 </li>
                 }
               <li className="nav-item">
-                <Link to='/cart' className="nav-link bi bi-bag"></Link> 
+                <Link to='/cart' className="nav-link bi bi-bag"> {cartItems.length}</Link> 
               </li>
             </ul>
           </div>
