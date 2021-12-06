@@ -30,6 +30,7 @@
     "fuse.js": "^6.4.6",
     "google-auth-library": "^7.10.3",
     "googleapi": "^1.0.2",
+    "googleapis": "^92.0.0",
     "history": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",

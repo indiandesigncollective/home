@@ -7,27 +7,30 @@ import Loader from '../Components/Loader'
 import FormContainer from '../Components/FormContainer'
 import { login } from '../actions/userActions'
 import { USER_LOGIN_SUCCESS } from '../constants/userConstants'
+import axios from 'axios'
 
 const LoginScreen = ({ }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const dispatch = useDispatch()
-
     const userLogin = useSelector(state => state.userLogin)
     const { loading, error, userInfo, success } = userLogin
+    const [data, setData] = useState("")
 
     let navigate = useNavigate()
     let location = useLocation()
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
     
-    useEffect(() => {
+    useEffect(async () => {
         if(userInfo)
         {
             navigate(redirect)
         }
-    },[userInfo, useNavigate, redirect])
+        const callBack = await axios.get("api/users/auth/google")
+        setData(callBack.data.loginLink) 
+        console.log(data)
+    },[userInfo, useNavigate, redirect, data])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -35,6 +38,7 @@ const LoginScreen = ({ }) => {
         {success && navigate('/cart')}
     }
     return (
+        <>
         <FormContainer>
             <h1>Sign In</h1>
             {error && <Message variant='danger'>{error}</Message>}
@@ -62,6 +66,13 @@ const LoginScreen = ({ }) => {
                 </Col>
             </Row>
         </FormContainer>
+        <div>
+        <br></br>
+                <Button type='submit' variant='secondary' className='google'>
+                <a href={data}>Sign In With Google</a>
+                </Button>
+        </div>
+        </>
     )
 }
 
