@@ -76,3 +76,14 @@ h2 {
   color: #5a5a5a;
 }
 
+.form-control {
+    border: 0;
+}
+
+.form-control {
+  border-top-style: hidden;
+        border-right-style: none;
+        border-left-style: hidden;
+        border-bottom-width: 3px;
+        background-color: #eee;
+}

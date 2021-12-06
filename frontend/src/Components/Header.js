@@ -41,7 +41,7 @@ const Header = () => {
               <Link to='/accessories' className="nav-link">Accessories</Link>
               </li> */}
               <li className="nav-item push">
-                <Link to='/search' className="nav-link bi bi-search"></Link>
+                <Link to='/shop' className="nav-link bi bi-search"></Link>
               </li>
               {/* <li>
                 <Route render={({ }) => <SearchBox/>}></Route>
