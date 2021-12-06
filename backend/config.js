@@ -1,8 +1,10 @@
+const baseURL = "http://localhost:5000"
+
 module.exports = {
   // The secret for the encryption of the jsonwebtoken
   JWTsecret: 'mysecret',
   baseURL: baseURL,
-  port: port,
+  port: 5000,
   // The credentials and information for OAuth2
   oauth2Credentials: {
     client_id: process.env.CLIENT_ID,
@@ -17,7 +19,7 @@ module.exports = {
     scopes: [
       'https://www.googleapis.com/auth/youtube.readonly'
     ]
-  }
+}}
 // import User from 'models/userModel.js'
 // import passport from 'passport'
 // //no idea what this does
@@ -34,38 +36,4 @@ module.exports = {
 // // passport.serializeUser(User.serializeUser())
 // // passport.deserializeUser(User.deserializeUser())
 
-// passport.use(new GoogleStrategy({
-//     clientID: ,
-//     clientSecret: ,
-//     callbackURL: "http://localhost:5000/auth/google/secrets",
-//     //userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOne({ googleId: profile.id }, async (err, user) => {
-//         if (user){
-//           return cb(err, user);
-//         }
-//         if (!user) {
-//           const newUser = new User({
-//             googleId: profile.id,
-//             username: profile.displayName,
-//           });
-//           await newUser.save();
-//           return cb(err, user);;
-//         }
-//   })
-// }))
-
-// passport.serializeUser((user, cb) => {
-//     cb(null, user.id);
-// })
-// passport.deserializeUser((id, cb) => {
-// User.findOne({ _id: id }, (err, user) => {
-//     const userInformation = {
-//     _id: user._id,
-//     name: user.username,
-//     email: user.email,
-//     };
-//     cb(err, userInformation);
-// });
-// });
+//
