@@ -5,15 +5,17 @@ import Product from '../Components/Product'
 import { useNavigate } from "react-router"
 import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Toast, Form} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Toast, Form} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { listProducts } from '../actions/productActions'
+import Carousel from 'react-grid-carousel'
 //import products from '../products'
 import Zoom from 'react-img-zoom'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+
 
 const ProductScreen = ({ match }) => {
     const [qty, setQty] = useState(1)
@@ -29,6 +31,14 @@ const ProductScreen = ({ match }) => {
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 2
+      }
 
     const productReviewCreate = useSelector(state => state.productReviewCreate)
     const { success:successProductReview, error: errorProductReview} = productReviewCreate
@@ -59,7 +69,8 @@ const ProductScreen = ({ match }) => {
 
     const recommend = products.filter(p => p.Category === product.Category && p.Tag === "bestseller" && p.Name !== product.Name)
     const chunk1 = recommend.slice(0,4) 
-    const chunk2 = recommend.slice(4,8)
+    const chunk2 = recommend.slice(4,8) 
+
 
     const s = String(product.Category)
     const title = s.charAt(0).toUpperCase()+s.slice(1)      
@@ -88,6 +99,7 @@ const ProductScreen = ({ match }) => {
                     {/* <Zoom img={product.Image_URL_2} zoomScale={2} width={600} height={600}/> */}
                     </Carousel.Item>
                 </Carousel>
+                
             </Col>
             <Col>
                 <ListGroup variant='flush'>
@@ -210,32 +222,8 @@ const ProductScreen = ({ match }) => {
         </>
         )}
         <center><h2>More Like This</h2></center>
-        <Carousel fade
-        prevIcon = {<span aria-hidden="true" className="bi bi-arrow-right-square-fill" />}
-        // controls = {false}
-        interval = "3000" 
-        >
-        <Carousel.Item>
-        <Row>
-        {chunk1.map(product => (
-                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
-                            <Product product={product} />
-                        </Col>        
-                    ))}         
-    </Row>
-    </Carousel.Item>
-    <Carousel.Item>
-        <Row>
-        {chunk2.map(product => (
-                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
-                            <Product product={product} />
-                        </Col>        
-                    ))}         
-    </Row>
-    </Carousel.Item>
-    </Carousel>
-        </>
-    )
+    </>
+  )
 }
 
 export default ProductScreen

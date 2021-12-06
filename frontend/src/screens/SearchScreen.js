@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
 import { Link, useParams, Route, Routes } from 'react-router-dom'
 import { Card, Form } from 'react-bootstrap'
-import SearchBox from '../constants/SearchBox'
-// import SearchBox from '../Components/SearchBox'
 import Fuse from "fuse.js"
 
 const SearchScreen = () => {
