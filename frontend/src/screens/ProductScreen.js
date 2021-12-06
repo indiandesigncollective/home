@@ -5,15 +5,15 @@ import Product from '../Components/Product'
 import { useNavigate } from "react-router"
 import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Toast, Form} from 'react-bootstrap'
+import {Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Carousel, Form} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { listProducts } from '../actions/productActions'
-import Carousel from 'react-grid-carousel'
 //import products from '../products'
 import Zoom from 'react-img-zoom'
+import ItemsCarousel from 'react-items-carousel';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 
@@ -21,6 +21,9 @@ const ProductScreen = ({ match }) => {
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
+
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const chevronWidth = 40;
 
     const { id } = useParams()
     const dispatch = useDispatch()
@@ -222,6 +225,61 @@ const ProductScreen = ({ match }) => {
         </>
         )}
         <center><h2>More Like This</h2></center>
+        <Carousel fade
+        prevIcon = {<span aria-hidden="true" className="bi bi-arrow-right-square-fill" />}
+        controls = {false}
+        interval = "3000" 
+        // controls = {false}
+        >
+<Carousel.Item>
+        <Row>
+        {chunk1.map(product => (
+                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
+                                <Card className = 'my-3 p-3 rounded'>
+                                    <a href={`/product/${product._id}`} target="_blank">
+                                    <Card.Img src = {product.Image_URL_1} variant = "top" />
+                                    </a>
+                                    <Card.Body>
+                                    <a href={`/product/${product._id}`} target="_blank">
+                                        <Card.Title as='div'>
+                                            {product.Name}
+                                            </Card.Title> 
+                                         </a>   
+                                    <Card.Text as='div'>
+                                        <Rating value = {product.Ratings} color = '#f4959a' />
+                                    </Card.Text>
+                                    <Card.Text as ='h6'>&#8377; {product.Price}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>        
+                    ))}         
+    </Row>
+    </Carousel.Item>
+    <Carousel.Item>
+        <Row>
+        {chunk2.map(product => (
+                        <Col key={product._id} s={12} md={6} lg={4} xl={3}>
+                                <Card className = 'my-3 p-3 rounded'>
+                                    <a href={`/product/${product._id}`} target="_blank">
+                                    <Card.Img src = {product.Image_URL_1} variant = "top" />
+                                    </a>
+                                    <Card.Body>
+                                    <a href={`/product/${product._id}`} target="_blank">
+                                        <Card.Title as='div'>
+                                            {product.Name}
+                                            </Card.Title> 
+                                         </a>   
+                                    <Card.Text as='div'>
+                                        <Rating value = {product.Ratings} color = '#f4959a' />
+                                    </Card.Text>
+                                    <Card.Text as ='h6'>&#8377; {product.Price}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>        
+                    ))}         
+    </Row>
+    </Carousel.Item>
+    </Carousel>
     </>
   )
 }
