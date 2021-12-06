@@ -14,6 +14,9 @@ $ npm i
 
 $ cd frontend
 $ npm i
+
+$ cd ..
+$ npm run dev
 ```
 After doing this, the frontend should run on localhost:3000 and the server should run on localhost:5000.
 
