@@ -1,7 +1,9 @@
 # Indian Design Collective: An E-Commerce Website for all things Indian
 > Mini-Project 1 for [CS-1202] Advanced Programming.
-This is a MERN stack e-commerce website. 
-This project was built by [Arundhati Balasubramaniam](https://github.com/arundhati-bala), [Medini Chopra](https://github.com/medinichopra), and [Siddh Veer Bakshi](https://github.com/sxddhvxxr).
+> 
+> This is a MERN stack e-commerce website. 
+> 
+> This project was built by [Arundhati Balasubramaniam](https://github.com/arundhati-bala), [Medini Chopra](https://github.com/medinichopra), and [Siddh Veer Bakshi](https://github.com/sxddhvxxr).
 
 ## Getting Started
 After opening the CLI, run the following commands:
