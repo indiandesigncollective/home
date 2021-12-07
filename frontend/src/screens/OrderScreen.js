@@ -1,3 +1,4 @@
+//Shows all order details
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Form, Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'

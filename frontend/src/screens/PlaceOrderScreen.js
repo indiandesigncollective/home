@@ -1,3 +1,4 @@
+//final check before checkout
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'

@@ -1,3 +1,4 @@
+//Home includes about us, bestselling products and shop by category
 import React, { useEffect } from 'react'
 import { Row, Col, Carousel } from 'react-bootstrap'
 import Product from '../Components/Product'

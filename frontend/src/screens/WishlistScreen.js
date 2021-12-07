@@ -1,3 +1,4 @@
+//items from wishlist can be added to cart or deleted. No qty associated with them.
 import React, { useEffect } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'

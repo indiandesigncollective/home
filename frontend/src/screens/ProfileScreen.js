@@ -1,3 +1,4 @@
+//User profile can be updated from here, can see all details including order history
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'

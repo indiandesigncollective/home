@@ -1,3 +1,4 @@
+//can login from email or google oAuth, or register a new user
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
@@ -68,7 +69,7 @@ const LoginScreen = ({ }) => {
         </FormContainer>
         <div>
         <br></br>
-                <Button type='submit' variant='secondary' className='google'>
+                <Button type='submit' variant='secondary' className='google' imageUrl="">   
                 <a href={data}>Sign In With Google</a>
                 </Button>
         </div>

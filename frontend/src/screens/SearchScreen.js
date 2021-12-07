@@ -1,3 +1,4 @@
+//Displays all products and uses fuzzy search, category filter and sorting
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Carousel } from 'react-bootstrap'
 import Product from '../Components/Product'

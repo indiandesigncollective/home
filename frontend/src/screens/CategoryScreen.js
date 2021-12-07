@@ -1,3 +1,4 @@
+// The category screen displays the products by category
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../Components/Product'

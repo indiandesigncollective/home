@@ -1,3 +1,4 @@
+//individual product page with images, recommendation, add to cart, add to wishlist and quantity
 import React, {useState, useEffect } from 'react'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Link, useParams } from 'react-router-dom'

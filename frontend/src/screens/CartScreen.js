@@ -1,3 +1,4 @@
+// This the cart screenm you can update quantity, delete products, move them to wishlist or proceeed to checkout.
 import React, { useEffect } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
