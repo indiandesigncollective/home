@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../Components/FormContainer'
 import CheckoutSteps from '../Components/CheckoutSteps'
-import { savePaymentMethod } from '../actions/cartActions'
+import { clearCart, resetCart, savePaymentMethod } from '../actions/cartActions'
 
 const PaymentScreen = ({}) => {
 

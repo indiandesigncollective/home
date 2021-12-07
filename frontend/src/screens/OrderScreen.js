@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { getOrderDetails } from '../actions/orderActions'
+import { resetCart } from '../actions/cartActions'
 
 const OrderScreen = ( {match} ) => {
 
@@ -25,6 +26,7 @@ const OrderScreen = ( {match} ) => {
         if(!order || order._id !== id) {
             dispatch(getOrderDetails(id))
         }
+        dispatch(resetCart())
     }, [order, id])
 
     // useEffect(() => {

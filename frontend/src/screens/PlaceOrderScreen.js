@@ -1,11 +1,13 @@
 //final check before checkout
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import CheckoutSteps from '../Components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
+import { removeFromCart, resetCart } from '../actions/cartActions'
+import { logout } from '../actions/userActions'
 
 const PlaceOrderScreen = () => {
     const dispatch = useDispatch()
@@ -30,12 +32,13 @@ const PlaceOrderScreen = () => {
         dispatch(createOrder({
             orderItems: cart.cartItems,
             shippingAddress: cart.shippingAddress,
-            // paymentMethod: cart.paymentMethod,
             itemsPrice: cart.itemsPrice,
             shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
-        }))
+        }),
+
+        )
     }
     return (
         <>
