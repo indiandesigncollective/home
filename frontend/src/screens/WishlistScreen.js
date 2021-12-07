@@ -26,6 +26,7 @@ const WishScreen = ({ match }) => {
         }
         let navigate = useNavigate()
     const addToCartHandler  = (id) => {
+            dispatch(removeFromWish(id))
             dispatch(addToCart(id))
             navigate(`/cart/${id}?qty=1`)
             }   

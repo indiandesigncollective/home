@@ -42,16 +42,17 @@ const LoginScreen = ({ }) => {
     return (
         <>
         <FormContainer>
-            <h1>Sign In</h1>
+            <center><h1>Sign In</h1></center>
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
-                <Button type='submit' variant='light' className='google' 
-                style= {{backgroundColor: "rgba(255, 255, 255, 0)", borderColor:"rgba(0,0,0,0)", padding:"0px", paddingBottom:"10px", marginLeft:"0px"}}>
+                <center><Button type='submit' variant='light' className='google' 
+                style= {{backgroundColor: "rgba(255, 255, 255, 0)", borderColor:"rgba(0,0,0,0)", padding:"0px", paddingBottom:"10px",paddingTop: "10px", marginLeft:"0px"}}>
                 <a href={data}>       
                     <img src = {Google}></img>
                 </a>
                 {/* <a href={data} style={{textDecoration: "none"}}>Sign In With Google</a> */}
                 </Button>
+                <h4>or</h4></center>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
