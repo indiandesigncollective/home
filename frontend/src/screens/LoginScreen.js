@@ -9,6 +9,7 @@ import FormContainer from '../Components/FormContainer'
 import { login } from '../actions/userActions'
 import { USER_LOGIN_SUCCESS } from '../constants/userConstants'
 import axios from 'axios'
+import Google from '../google.png'
 
 const LoginScreen = ({ }) => {
     const [email, setEmail] = useState('')
@@ -44,6 +45,13 @@ const LoginScreen = ({ }) => {
             <h1>Sign In</h1>
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
+                <Button type='submit' variant='light' className='google' 
+                style= {{backgroundColor: "rgba(255, 255, 255, 0)", borderColor:"rgba(0,0,0,0)", padding:"0px", paddingBottom:"10px", marginLeft:"0px"}}>
+                <a href={data}>       
+                    <img src = {Google}></img>
+                </a>
+                {/* <a href={data} style={{textDecoration: "none"}}>Sign In With Google</a> */}
+                </Button>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
@@ -67,12 +75,6 @@ const LoginScreen = ({ }) => {
                 </Col>
             </Row>
         </FormContainer>
-        <div>
-        <br></br>
-                <Button type='submit' variant='secondary' className='google' imageUrl="">   
-                <a href={data}>Sign In With Google</a>
-                </Button>
-        </div>
         </>
     )
 }
