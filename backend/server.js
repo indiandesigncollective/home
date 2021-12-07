@@ -1,5 +1,4 @@
 import express from 'express'
-//import products from './data/products.js'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import colors from 'colors'
@@ -30,10 +29,6 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('API is running....')
-})
-
 //Routes
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
@@ -61,7 +56,7 @@ app.get('/auth_callback', async function (req, res) {
             const user = (await User.findOne({ email })) || (await User.create({
                 name,
                 email,
-                password:null,
+                password: null,
             }))
             return res.redirect(`http://localhost:3000?setUserInfo=${Buffer.from(JSON.stringify({
                 _id: user._id,

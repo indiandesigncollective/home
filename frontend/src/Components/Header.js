@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom' //, Route 
 //import { LinkContainer } from 'react-router-bootstrap'
-import { Container, NavDropdown, Button } from 'react-bootstrap'
+import { NavDropdown} from 'react-bootstrap' //, Button , Container, 
 import { logout } from '../actions/userActions'
 // import SearchBox from './SearchBox'
 
@@ -31,21 +31,9 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarColor03">
             <ul className="navbar-nav me-auto box">
-              {/* <li className="nav-item"> */}
-              {/* <Link to='/decor' className="nav-link">Decor</Link>
-              </li>
-              <li className="nav-item">
-              <Link to='/beauty' className="nav-link">Beauty</Link>
-              </li>
-              <li className="nav-item">
-              <Link to='/accessories' className="nav-link">Accessories</Link>
-              </li> */}
               <li className="nav-item push">
                 <Link to='/shop' className="nav-link bi bi-search"></Link>
               </li>
-              {/* <li>
-                <Route render={({ }) => <SearchBox/>}></Route>
-              </li> */}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                     <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>

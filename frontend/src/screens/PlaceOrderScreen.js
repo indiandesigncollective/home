@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import CheckoutSteps from '../Components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
-import { removeFromCart, resetCart } from '../actions/cartActions'
-import { logout } from '../actions/userActions'
 
 const PlaceOrderScreen = () => {
     const dispatch = useDispatch()

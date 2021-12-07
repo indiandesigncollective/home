@@ -1,4 +1,4 @@
-//ALL USER INFO//
+//user info that serves as seeder data for initial data population
 
 import bcrypt from 'bcryptjs'
 

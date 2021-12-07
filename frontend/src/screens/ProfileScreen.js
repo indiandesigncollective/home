@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'
-//import { Link } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -30,7 +29,6 @@ const ProfileScreen = ({  }) => {
     const orderListMy = useSelector((state) => state.orderListMy)
     const { loading:loadingOrders, error:errorOrders, orders } = orderListMy
 
-    //let location = useLocation()
     let navigate = useNavigate()
     useEffect(() => {
         if(!userInfo) {
@@ -100,22 +98,14 @@ const ProfileScreen = ({  }) => {
         <thead>
             <tr>
                 <th>ID</th>
-                {/* <th>Date</th> */}
                 <th>Total</th>
-                {/* <th>Paid</th> */}
-                {/* <th>Delivered</th> */}
             </tr>
         </thead>
         <tbody>
             {orders.map(order => (
                 <tr key={order._id}>
                     <td>{order._id}</td>
-                    {/* <td>{order.createdAt.substring(0, 10)}</td> */}
                     <td>{order.totalPrice}</td>
-                    {/* <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
-                        <i className='fas fa-times' style={{color: 'red'}}></i>
-                    )}</td> */}
-                    {/* <td>{order._id}</td> */}
                     <td>
                         <Link to={`/order/${order._id}`}>
                             <Button className='btn-sm' variant='light'>Details</Button>

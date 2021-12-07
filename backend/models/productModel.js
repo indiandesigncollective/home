@@ -1,25 +1,26 @@
-//MODEL FOR PRODUCT DATA//
+//db model for product data
 
 import mongoose from 'mongoose'
 
 const reviewSchema = mongoose.Schema({
-    name: {type:String, required: true},
-    rating: {type:Number, required: true},
-    comment: {type:String, required: true},
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User'}
+        ref: 'User'
+    }
 }, {
     timestamps: true
-})
+}) //implementing separate schema for reviews
 
 const productSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
-    },        
+    },
     Name: {
         type: String,
         required: true

@@ -1,4 +1,4 @@
-//MODEL FOR USER DATA//
+//db model for user data
 
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
@@ -14,8 +14,7 @@ const userSchema = mongoose.Schema({
         unique: true
     },
     password: {
-        type: String,
-        //required: true
+        type: String
     },
     isAdmin: {
         type: Boolean,
@@ -26,18 +25,18 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
-userSchema.methods.matchPassword = async function (enteredPassword){
+userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-userSchema.pre('save', async function (next){
-    if(!this.isModified('password') || this.password === null) {
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password') || this.password === null) {
         next()
     }
 
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
-})
+}) //hashing the password
 
 const User = mongoose.model('User', userSchema)
 

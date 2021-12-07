@@ -1,13 +1,12 @@
 //Displays all products and uses fuzzy search, category filter and sorting
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Carousel } from 'react-bootstrap'
+import { Row, Col} from 'react-bootstrap'  
 import Product from '../Components/Product'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productActions'
-import { Link, useParams, Route, Routes } from 'react-router-dom'
-import { Card, Form } from 'react-bootstrap'
+import {Form } from 'react-bootstrap'  
 import Fuse from "fuse.js"
 
 const SearchScreen = () => {
@@ -36,11 +35,9 @@ const SearchScreen = () => {
          sortResult = catResults
     }
     else if (sort === "Sort By: Low to High"){
-        // sortResult = (catResults.Price).sort()
         sortResult = catResults.sort((firstItem, secondItem) => firstItem.Price - secondItem.Price)
     }
     else {
-        // sortResult = catResults.Price.sort().reverse()
         const temp = catResults.sort((firstItem, secondItem) => firstItem.Price - secondItem.Price)
         sortResult = catResults.reverse()
     }
@@ -95,6 +92,5 @@ const SearchScreen = () => {
 
     )
   }
-
 
 export default SearchScreen

@@ -1,3 +1,5 @@
+//routes for products -> get all products, get product by id, get product reviews
+
 import express from 'express'
 const router = express.Router()
 import { getProducts, getProductById, createProductReview } from '../controllers/productController.js'

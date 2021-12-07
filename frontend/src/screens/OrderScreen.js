@@ -1,7 +1,7 @@
 //Shows all order details
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
-import { Form, Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -12,7 +12,6 @@ const OrderScreen = ( {match} ) => {
 
     const { id } = useParams()
     console.log(id)
-    //const orderId = match.params.id
     const dispatch = useDispatch()
 
     const orderDetails = useSelector(state => state.orderDetails)
@@ -28,10 +27,6 @@ const OrderScreen = ( {match} ) => {
         }
         dispatch(resetCart())
     }, [order, id])
-
-    // useEffect(() => {
-    //     dispatch(getOrderDetails(id))
-    // }, [])
 
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <>
         <h1>Order {order._id}</h1>

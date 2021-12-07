@@ -38,7 +38,7 @@ More Specifically,
 	</tr>
 	<tr>
 		<td>Authentication</td>
-		<td>bcrypt.js</td>
+		<td>bcrypt.js, JWT, Google's OAuth 2.0</td>
 	</tr>
 	<tr>
 		<td>Back-End</td>

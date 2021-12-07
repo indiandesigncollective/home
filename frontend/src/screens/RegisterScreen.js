@@ -19,28 +19,27 @@ const RegisterScreen = ({ }) => {
     const dispatch = useDispatch()
 
     const userRegister = useSelector(state => state.userRegister)
-    const { loading, error, userInfo , success} = userRegister
+    const { loading, error, userInfo, success } = userRegister
 
     let navigate = useNavigate()
     let location = useLocation()
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
-    
+
     useEffect(() => {
-        if(userInfo)
-        {
+        if (userInfo) {
             navigate(redirect)
         }
-    },[userInfo, useNavigate, redirect])
+    }, [userInfo, useNavigate, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             setMessage('Passwords do not match')
         }
         else {
-        dispatch(register(name, email, password))
-        {success && navigate('/cart')}
+            dispatch(register(name, email, password))
+            { success && navigate('/cart') }
         }
     }
     return (
@@ -50,7 +49,7 @@ const RegisterScreen = ({ }) => {
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+                <Form.Group controlId='name'>
                     <Form.Label>Name</Form.Label>
                     <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}>
                     </Form.Control>
@@ -80,7 +79,7 @@ const RegisterScreen = ({ }) => {
             </Form>
             <Row className='py-3'>
                 <Col>
-                Have an Account? <Link to={redirect ? `/login?redirect=${redirect}`:'/login'}>Login</Link>
+                    Have an Account? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link>
                 </Col>
             </Row>
         </FormContainer>

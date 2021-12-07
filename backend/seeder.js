@@ -1,4 +1,4 @@
-//SEEDER DATA FOR DATABASE//
+//initial seeding of data into database
 
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
@@ -14,7 +14,7 @@ dotenv.config()
 connectDB()
 
 const importData = async () => {
-    try{
+    try {
         await Order.deleteMany()
         await User.deleteMany()
         await Product.deleteMany()
@@ -22,35 +22,35 @@ const importData = async () => {
         const createdUsers = await User.insertMany(users)
         const adminUser = createdUsers[0]._id
         const sampleProducts = products.map(product => {
-            return {...product, user:adminUser}
+            return { ...product, user: adminUser }
         })
         await Product.insertMany(sampleProducts)
         console.log('Data Imported!'.green.inverse)
         process.exit()
-    } catch(error){
+    } catch (error) {
         console.error(`${error}`.red.inverse)
         process.exit(1)
     }
 }
 
 const destroyData = async () => {
-    try{
+    try {
         await Order.deleteMany()
         await User.deleteMany()
         await Product.deleteMany()
 
         console.log('Data Destroyed!'.red.inverse)
         process.exit()
-    } catch(error){
+    } catch (error) {
         console.error(`${error}`.red.inverse)
         process.exit(1)
     }
 }
-if(process.argv[2] == '-d'){
+if (process.argv[2] == '-d') {
     destroyData()
-} else{
+} else {
     importData()
 }
-//don't do this
+
 //npm run data:import for import
 //npm run data:destroy -d for delete
