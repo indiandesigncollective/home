@@ -42,6 +42,7 @@ const ProductScreen = ({ match }) => {
     const { success: successProductReview, error: errorProductReview } = productReviewCreate
 
     useEffect(() => {
+        window.scrollTo(0,0)
         dispatch(listProducts())
     }, [dispatch])
 
