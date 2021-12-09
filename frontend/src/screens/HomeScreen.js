@@ -1,7 +1,5 @@
 //Home includes about us, bestselling products and shop by category
 import React, { useEffect } from 'react'
-import UseAnimations from 'react-useanimations';
-import heart from 'react-useanimations/lib/github'
 import { Row, Col, Carousel } from 'react-bootstrap'
 import Product from '../Components/Product'
 import Message from '../Components/Message'
