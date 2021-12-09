@@ -48,7 +48,8 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
-    "react-slick": "^0.28.1"
+    "react-slick": "^0.28.1",
+    "react-useanimations": "^2.0.6"
   },
   "devDependencies": {
     "concurrently": "^6.4.0",
